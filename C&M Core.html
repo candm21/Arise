@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Journal Resource Hub</title>
+<title>C&M Core</title>
 <style>
 :root{
     --primary:#0F3D91;
@@ -24,92 +24,142 @@
 body{
     background:var(--bg);
     color:var(--text);
+    padding-top: 20px;
 }
 
-/* ================= HEADER ================= */
+/* ================= STICKY HEADER WRAPPER ================= */
+.sticky-top-wrapper {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 25px;
+    position: sticky;
+    top: 20px;
+    z-index: 100;
+}
 
-.header{
+.header-card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* ================= BLUE HEADER ================= */
+.blue-header {
     background: linear-gradient(135deg,#0F3D91,#2563EB);
-    padding: 18px 30px;
-    color: #fff;
-    box-shadow: 0 4px 18px rgba(0,0,0,.15);
-}
-
-.brand{
+    padding: 22px 28px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;   /* Centers the content */
-    position: relative;
+    color: white;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-.company-logo{
-    width: 60px;
-    height: 60px;
-    object-fit: contain;
-    position: absolute;
-    left: 0;                   /* Keeps logo on the left */
-}
-
-.brand-text{
-    text-align: center;
-}
-
-.brand h1{
+.brand h1 {
     font-size: 28px;
     font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.brand p {
+    font-size: 15px;
+    opacity: 0.9;
+    margin-top: 2px;
+    font-weight: 400;
+}
+
+.clock-box {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    padding: 12px 22px;
+    border-radius: 16px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    min-width: 180px;
+}
+
+.clock-date {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.95;
+    letter-spacing: 0.3px;
     margin-bottom: 4px;
 }
 
-.brand p{
-    font-size: 15px;
-    opacity: .9;
-    margin: 0;
-}
-/* ================= MAIN ================= */
-
-.wrap{
-    max-width:1300px;
-    margin:auto;
-    padding:25px;
+.clock-time {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
 }
 
-/* ================= SEARCH ================= */
-
-.search{
-    background:#fff;
-    border-radius:14px;
-    padding:14px 18px;
-    margin-top:-10px;
-    margin-bottom:25px;
-    box-shadow:0 6px 18px rgba(0,0,0,.08);
+/* ================= SEARCH BAR (inside white card) ================= */
+.search-wrapper {
+    padding: 16px 28px 22px 28px;
+    background: #FFFFFF;
 }
 
-.search input{
-    width:100%;
-    border:none;
-    outline:none;
-    font-size:16px;
+.search-bar {
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    border: 2px solid #2563EB;
+    border-radius: 14px;
+    padding: 10px 18px;
+    transition: box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
 }
 
-/* ================= STATS ================= */
+.search-bar:focus-within {
+    box-shadow: 0 4px 16px rgba(37, 99, 235, 0.20);
+}
 
-.stats{
+.search-icon {
+    color: #6B7280;
+    font-size: 20px;
+    margin-right: 12px;
+    opacity: 0.7;
+}
+
+.search-bar input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    background: transparent;
+    color: var(--text);
+}
+
+.search-bar input::placeholder {
+    color: #9CA3AF;
+}
+
+/* ================= MAIN CONTENT ================= */
+.wrap {
+    max-width: 1300px;
+    margin: 25px auto 0;
+    padding: 0 25px 25px;
+}
+
+.stats {
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:20px;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 .stat{
     background:var(--card);
-    padding:10px;
+    padding:14px 18px;
     border-radius:16px;
-    box-shadow:0 6px 20px rgba(0,0,0,.08);
+    box-shadow:0 6px 20px rgba(0,0,0,.06);
     transition:.3s;
 }
 
 .stat:hover{
     transform:translateY(-4px);
+    box-shadow:0 12px 28px rgba(37,99,235,.12);
 }
 
 .stat .label{
@@ -119,15 +169,13 @@ body{
 
 .stat .value{
     margin-top:4px;
-    font-size:26px;
+    font-size:28px;
     font-weight:bold;
     color:var(--primary);
 }
 
-/* ================= SECTION ================= */
-
 .section-title{
-    margin:30px 0 16px;
+    margin:35px 0 16px;
     color:var(--primary);
     font-size:24px;
     font-weight:700;
@@ -135,15 +183,11 @@ body{
     padding-left:10px;
 }
 
-/* ================= GRID ================= */
-
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fill,minmax(340px,1fr));
     gap:18px;
 }
-
-/* ================= CARD ================= */
 
 .card{
     background:#fff;
@@ -152,13 +196,13 @@ body{
     display:flex;
     align-items:center;
     gap:15px;
-    box-shadow:0 6px 18px rgba(0,0,0,.08);
+    box-shadow:0 6px 18px rgba(0,0,0,.06);
     transition:.25s;
 }
 
 .card:hover{
     transform:translateY(-5px);
-    box-shadow:0 12px 25px rgba(37,99,235,.15);
+    box-shadow:0 12px 25px rgba(37,99,235,.12);
 }
 
 .icon{
@@ -190,8 +234,6 @@ body{
     color:var(--gray);
 }
 
-/* ================= FOOTER ================= */
-
 footer{
     margin-top:40px;
     padding:18px;
@@ -203,114 +245,145 @@ footer{
 }
 
 /* ================= MOBILE ================= */
-
 @media(max-width:900px){
-
-.header{
-    padding:18px;
-}
-
-.brand{
-    flex-direction:column;
-    text-align:center;
-}
-
-.company-logo{
-    width:55px;
-    height:55px;
-}
-
-.brand h1{
-    font-size:24px;
-}
-
-.brand p{
-    font-size:14px;
-}
-
-.stats{
-    grid-template-columns:1fr;
-}
-
-.grid{
-    grid-template-columns:1fr;
-}
-
+    .blue-header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+    .clock-box {
+        align-self: flex-end;
+        min-width: unset;
+        padding: 8px 16px;
+    }
+    .clock-time {
+        font-size: 18px;
+    }
+    .search-wrapper {
+        padding: 12px 16px 18px 16px;
+    }
+    .stats{
+        grid-template-columns:1fr;
+    }
+    .grid{
+        grid-template-columns:1fr;
+    }
+    .sticky-top-wrapper {
+        padding: 0 12px;
+        top: 10px;
+    }
+    .wrap {
+        padding: 0 12px 20px;
+    }
 }
 </style>
 </head>
 <body>
-<div class="header">
-<div class="brand">
-<!--img src="candm_logo.png" class="company-logo" alt="C&M Logo"-->
-<div>
-<h1>C&M Core</h1>
-<p>Internal and External</p>
-</div>
-</div>
+
+<!-- STICKY HEADER + SEARCH -->
+<div class="sticky-top-wrapper">
+    <div class="header-card">
+        <!-- Blue top part with brand + clock -->
+        <div class="blue-header">
+            <div class="brand">
+                <h1>C&M Core</h1>
+                <p>Internal and External</p>
+            </div>
+            <div class="clock-box" id="liveClock">
+                <div class="clock-date" id="clockDate">Friday, July 3, 2026</div>
+                <div class="clock-time" id="clockTime">12:19:26 PM</div>
+            </div>
+        </div>
+        <!-- Search bar inside white area -->
+        <div class="search-wrapper">
+            <div class="search-bar">
+                <span class="search-icon">🔍</span>
+                <input id="searchBox" type="text" placeholder="Search resources..." onkeyup="searchCards()">
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- MAIN CONTENT -->
 <div class="wrap">
-<div class="search">
-<input id="searchBox" type="text" placeholder="🔍 Search resources..." onkeyup="searchCards()">
+    <div class="stats">
+        <div class="stat"><div class="label">Internal Resources</div><div class="value">28</div></div>
+        <div class="stat"><div class="label">External Resources</div><div class="value">5</div></div>
+        <div class="stat"><div class="label">Total Resources</div><div class="value">33</div></div>
+    </div>
+
+    <h2 class="section-title">Internal Resources</h2>
+    <div class="grid">
+        <div class="card"><div class="icon">📊</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQC9bC9Os2AXSKFaSwa6-ZwqAVbXD6Ic3Tysz3Ydtrw2EQo?rtime=Z7aNvq7O3kg" target="_blank">Post Pub</a><div class="desc">Publication tracking</div></div></div>
+        <div class="card"><div class="icon">📝</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=351771527#gid=351771527" target="_blank">Journal Article Types</a></div></div>
+        <div class="card"><div class="icon">🌍</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=1847904142#gid=1847904142" target="_blank">Sage Global Template</a></div></div>
+        <div class="card"><div class="icon">✅</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=134721218#gid=134721218" target="_blank">Rollout Checklist</a></div></div>
+        <div class="card"><div class="icon">⚙️</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=1907938448#gid=1907938448" target="_blank">Engineering & Material Science Journals</a></div></div>
+        <div class="card"><div class="icon">💻</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=545686563#gid=545686563" target="_blank">SOAP-ONLINE</a></div></div>
+        <div class="card"><div class="icon">📚</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=369721509#gid=369721509" target="_blank">MaryAnnLiebert Journals</a></div></div>
+        <div class="card"><div class="icon">📅</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQDs57-tm61GSYtkkLeYihyRAcHK84KwPjdNp7V4HE1dSVQ?rtime=uPjBfUDT3kg" target="_blank">QA Meeting Agenda</a></div></div>
+        <div class="card"><div class="icon">📖</div><div><a href="https://docs.google.com/spreadsheets/d/1KmkYdQEzHw3n7lpW58_4so7c9P6V8MSI/edit?gid=389336948#gid=389336948" target="_blank">Journal Specific Instruction</a></div></div>
+        <div class="card"><div class="icon">📦</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQAt9GHEHLlARIO2EgwkM6FuAVCKBb50rCb4Y_zah8JBG8s?rtime=e1XyBYjS3kg" target="_blank">T&S Rollout in Batch</a></div></div>
+        <div class="card"><div class="icon">🔗</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQD0K8qmTsYOSqpruxpEkqm8AdeEpIJwZp2QggF7l-6T6uw?rtime=VjMNWZup3kg" target="_blank">Achievable Articles List</a></div></div>
+        <div class="card"><div class="icon">🛠️</div><div><a href="https://docs.google.com/spreadsheets/d/1_SNGsvqAO3z3JuH9MrOxNtJZcHkMJa2w0DrcfejceeU/edit?gid=0#gid=0" target="_blank">Template Corrections</a></div></div>
+        <div class="card"><div class="icon">📄</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/r/personal/candm_cloud_space_candm_in/_layouts/15/doc2.aspx?sourcedoc=%7B2602E2A6-5E52-49A9-9B2A-DE6B3F7088AF%7D&file=Book%201.xlsx&action=editNew&mobileredirect=true" target="_blank">Sage Edit to XML</a></div></div>
+        <div class="card"><div class="icon">📧</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/ET4A65kdbsFCjiwxL2i-uVkBtFZlNqzduAyQf2LsUFKotw?rtime=9O-fdUH63Eg" target="_blank">Non-VPM Problems Identified and Author Clarifications</a></div></div>
+        <div class="card"><div class="icon">📤</div><div><a href="https://onedrive.live.com/:x:/g/personal/a5451fe13da52a22/IQD9YIhHI3aDRpD9dtCi8aOnAch9jvhoawYgsx-NeJtHwpg?rtime=JwMt4MvR3kg&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9hNTQ1MWZlMTNkYTUyYTIyL0lRRDlZSWhISTNhRFJwRDlkdENpOGFPbkFjaDlqdmhvYXdZZ3N4LU5lSnRId3BnP0NUPTE3ODIyOTAyNjk1OTUmd2ViPTEmVGVhbXNDSUQ9NDI4MGJlNmYtMTQzNi00MmNmLWJjZmUtZmZmZTM3NTc4MDI2JmxpbmtPcGVuVGltZT0xNzgyMjkwMjY5NjIw" target="_blank">XML Export Error Report [InDesign]</a></div></div>
+        <div class="card"><div class="icon">📋</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/EWxqkvkWsk9Ds6iXe3sk6jMBr-L4F6F9FnePg1-CafkQnw?rtime=xEZIgdrl20g" target="_blank">External Log and RCA/CA/PA</a></div></div>
+        <div class="card"><div class="icon">📊</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQBBswV0bZYwSLQ15G0VR_9cAYPmJQL_6_WPa5BEPrV096w?e=6LINxh" target="_blank">Author Survey Query Tracker</a></div></div>
+        <div class="card"><div class="icon">📈</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQBoJ90HBceWSYyJOSyrIWcnAdOc55ExpmVCOxojPPitw58?e=UjrgDV" target="_blank">CE SpiralUp Log Tracker</a></div></div>
+        <div class="card"><div class="icon">💬</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/ETurJQVyVtpEvn5w9ov9S4kBX0vGOZ7-XB2dKG2T8QqUAg?rtime=AeIKBhku3Eg" target="_blank">Vendor Feedback to CM</a></div></div>
+        <div class="card"><div class="icon">✅</div><div><a href="https://onedrive.live.com/:x:/g/personal/1cf6df5af3afd9a7/IQD1IqmUFgiXTrjVOFpoAQQSAQVVgYUvAg5xmx_3d6ogMLE?rtime=PaaH9kjT3kg" target="_blank">Deviation Accepted After Rollout</a></div></div>
+        <div class="card"><div class="icon">📦</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQB_25FFaOU0RJLA7GYk_R31AXebtKVb79uHCtidz6XHGzk?rtime=K_PUjkmZ3kg" target="_blank">Embox Tool Live File Tracking</a></div></div>
+        <div class="card"><div class="icon">🔧</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQDSy9hJeq2fR7TfEWunX9mTAQX5eVwo9MDf4FtDZAGSxNM?rtime=GHX8ro0_3kg" target="_blank">Breakdown Tool Tracking</a></div></div>
+        <div class="card"><div class="icon">⏸️</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/Efs0DIoUtn1Ar5wQqymATb4BARa1XjFtlzu4jfZ9r7R8hw?rtime=F1SdSiYS3kg" target="_blank">Breakdown Hold Reason Tracking</a></div></div>
+        <div class="card"><div class="icon">🚀</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/ES30YcQcuUBEg7YSDCQzoW4BUIoFvnSsJvhj_NqHwkEbyw?rtime=Jv-xGSUV3kg" target="_blank">T&S Rollout Journal Tracking</a></div></div>
+        <div class="card"><div class="icon">✏️</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/ETyebMg6gdRDqlqnh3SvDwoB1BvcHPcFow8K_Lmpg2C-Eg?e=ZkfWnl" target="_blank">Sage Edit Issues</a></div></div>
+        <div class="card"><div class="icon">🆔</div><div><a href="https://docs.google.com/spreadsheets/d/1MB9qAlHxckPGbax3bPRB48r_8YaI56Q0RrPsrwGTtac/edit?gid=0#gid=0" target="_blank">ORCID Name Mismatch</a></div></div>
+        <div class="card"><div class="icon">⛔</div><div><a href="https://corefultech-my.sharepoint.com/:x:/p/pavankumar_harikar/IQCkE7EqdCRwTZnMOrk87gz6AUaocyR49-QCvcq5BThiWn0?rtime=RIpaQuPR3kg" target="_blank">XML Error Tracker</a></div></div>
+        <div class="card"><div class="icon">🚨</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQAOCh6y3mioSarl5dlnMrEXAb03JufrrTrcmGY1kkp8r3c?rtime=H9b64gvY3kg" target="_blank">QA Log</a></div></div>
+    </div>
+
+    <h2 class="section-title">External Resources</h2>
+    <div class="grid">
+        <div class="card"><div class="icon">❔</div><div><a href="https://sage-cloud.atlassian.net/wiki/external/Y2EyZDVkNjY2NjZlNDIzYTlkM2VjZDRkOGM5OWQxMjc" target="_blank">Vendor FAQ</a></div></div>
+        <div class="card"><div class="icon">🌐</div><div><a href="https://sage-cloud.atlassian.net/wiki/external/MWFkN2M5NTFhNTM0NDA2NWJhNDljYmM3NDIwMDIyMWE" target="_blank">Journal Confluence</a></div></div>
+        <div class="card"><div class="icon">📝</div><div><a href="https://airtable.com/app16EGd1kJLRd9K7/shrWMrw4uJDncbU9s/tbl0hCzyBD0KVjfvT" target="_blank">Sage Handover Notes Portal</a></div></div>
+        <div class="card"><div class="icon">📚</div><div><a href="https://airtable.com/appRxRerdGib9PMrn/shrFLT1mDoRxFfECo/tblcGVinqH1z5voml" target="_blank">Journal MASTER List</a></div></div>
+        <div class="card"><div class="icon">🚀</div><div><a href="https://airtable.com/appmDIkZ1Chq5VDZ9/shr6WCdEkGw1gYDb7/tblgqnPd0J4Lc2PXo" target="_blank">T&amp;S Batch 4_C&amp;M List</a></div></div>
+    </div>
 </div>
 
-<div class="stats">
-<div class="stat"><div class="label">Internal Resources</div><div class="value">28</div></div>
-<div class="stat"><div class="label">External Resources</div><div class="value">5</div></div>
-<div class="stat"><div class="label">Total Resources</div><div class="value">33</div></div>
-</div>
-
-<h2 class="section-title">Internal Resources</h2>
-<div class="grid">
-<div class="card"><div class="icon">📊</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQC9bC9Os2AXSKFaSwa6-ZwqAVbXD6Ic3Tysz3Ydtrw2EQo?rtime=Z7aNvq7O3kg" target="_blank">Post Pub</a><div class="desc">Publication tracking</div></div></div>
-<div class="card"><div class="icon">📝</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=351771527#gid=351771527" target="_blank">Journal Article Types</a></div></div>
-<div class="card"><div class="icon">🌍</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=1847904142#gid=1847904142" target="_blank">Sage Global Template</a></div></div>
-<div class="card"><div class="icon">✅</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=134721218#gid=134721218" target="_blank">Rollout Checklist</a></div></div>
-<div class="card"><div class="icon">⚙️</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=1907938448#gid=1907938448" target="_blank">Engineering & Material Science Journals</a></div></div>
-<div class="card"><div class="icon">💻</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=545686563#gid=545686563" target="_blank">SOAP-ONLINE</a></div></div>
-<div class="card"><div class="icon">📚</div><div><a href="https://docs.google.com/spreadsheets/d/15ZwLftOmczhpOOR7uZGpJNRgaFHCIJN6/edit?gid=369721509#gid=369721509" target="_blank">MaryAnnLiebert Journals</a></div></div>
-<div class="card"><div class="icon">📅</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQDs57-tm61GSYtkkLeYihyRAcHK84KwPjdNp7V4HE1dSVQ?rtime=uPjBfUDT3kg" target="_blank">QA Meeting Agenda</a></div></div>
-<div class="card"><div class="icon">📖</div><div><a href="https://docs.google.com/spreadsheets/d/1KmkYdQEzHw3n7lpW58_4so7c9P6V8MSI/edit?gid=389336948#gid=389336948" target="_blank">Journal Specific Instruction</a></div></div>
-<div class="card"><div class="icon">📦</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQAt9GHEHLlARIO2EgwkM6FuAVCKBb50rCb4Y_zah8JBG8s?rtime=e1XyBYjS3kg" target="_blank">T&S Rollout in Batch</a></div></div>
-<div class="card"><div class="icon">🔗</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQD0K8qmTsYOSqpruxpEkqm8AdeEpIJwZp2QggF7l-6T6uw?rtime=VjMNWZup3kg" target="_blank">Achievable Articles List</a></div></div>
-<div class="card"><div class="icon">🛠️</div><div><a href="https://docs.google.com/spreadsheets/d/1_SNGsvqAO3z3JuH9MrOxNtJZcHkMJa2w0DrcfejceeU/edit?gid=0#gid=0" target="_blank">Template Corrections</a></div></div>
-<div class="card"><div class="icon">📄</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/r/personal/candm_cloud_space_candm_in/_layouts/15/doc2.aspx?sourcedoc=%7B2602E2A6-5E52-49A9-9B2A-DE6B3F7088AF%7D&file=Book%201.xlsx&action=editNew&mobileredirect=true" target="_blank">Sage Edit to XML</a></div></div>
-<div class="card"><div class="icon">📧</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/ET4A65kdbsFCjiwxL2i-uVkBtFZlNqzduAyQf2LsUFKotw?rtime=9O-fdUH63Eg" target="_blank">Non-VPM Problems Identified and Author Clarifications</a></div></div>
-<div class="card"><div class="icon">📤</div><div><a href="https://onedrive.live.com/:x:/g/personal/a5451fe13da52a22/IQD9YIhHI3aDRpD9dtCi8aOnAch9jvhoawYgsx-NeJtHwpg?rtime=JwMt4MvR3kg&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3gvYy9hNTQ1MWZlMTNkYTUyYTIyL0lRRDlZSWhISTNhRFJwRDlkdENpOGFPbkFjaDlqdmhvYXdZZ3N4LU5lSnRId3BnP0NUPTE3ODIyOTAyNjk1OTUmd2ViPTEmVGVhbXNDSUQ9NDI4MGJlNmYtMTQzNi00MmNmLWJjZmUtZmZmZTM3NTc4MDI2JmxpbmtPcGVuVGltZT0xNzgyMjkwMjY5NjIw" target="_blank">XML Export Error Report [InDesign]</a></div></div>
-<div class="card"><div class="icon">📋</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/EWxqkvkWsk9Ds6iXe3sk6jMBr-L4F6F9FnePg1-CafkQnw?rtime=xEZIgdrl20g" target="_blank">External Log and RCA/CA/PA</a></div></div>
-<div class="card"><div class="icon">📊</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQBBswV0bZYwSLQ15G0VR_9cAYPmJQL_6_WPa5BEPrV096w?e=6LINxh" target="_blank">Author Survey Query Tracker</a></div></div>
-<div class="card"><div class="icon">📈</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQBoJ90HBceWSYyJOSyrIWcnAdOc55ExpmVCOxojPPitw58?e=UjrgDV" target="_blank">CE SpiralUp Log Tracker</a></div></div>
-<div class="card"><div class="icon">💬</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/ETurJQVyVtpEvn5w9ov9S4kBX0vGOZ7-XB2dKG2T8QqUAg?rtime=AeIKBhku3Eg" target="_blank">Vendor Feedback to CM</a></div></div>
-<div class="card"><div class="icon">✅</div><div><a href="https://onedrive.live.com/:x:/g/personal/1cf6df5af3afd9a7/IQD1IqmUFgiXTrjVOFpoAQQSAQVVgYUvAg5xmx_3d6ogMLE?rtime=PaaH9kjT3kg" target="_blank">Deviation Accepted After Rollout</a></div></div>
-<div class="card"><div class="icon">📦</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQB_25FFaOU0RJLA7GYk_R31AXebtKVb79uHCtidz6XHGzk?rtime=K_PUjkmZ3kg" target="_blank">Embox Tool Live File Tracking</a></div></div>
-<div class="card"><div class="icon">🔧</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQDSy9hJeq2fR7TfEWunX9mTAQX5eVwo9MDf4FtDZAGSxNM?rtime=GHX8ro0_3kg" target="_blank">Breakdown Tool Tracking</a></div></div>
-<div class="card"><div class="icon">⏸️</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/Efs0DIoUtn1Ar5wQqymATb4BARa1XjFtlzu4jfZ9r7R8hw?rtime=F1SdSiYS3kg" target="_blank">Breakdown Hold Reason Tracking</a></div></div>
-<div class="card"><div class="icon">🚀</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/ES30YcQcuUBEg7YSDCQzoW4BUIoFvnSsJvhj_NqHwkEbyw?rtime=Jv-xGSUV3kg" target="_blank">T&S Rollout Journal Tracking</a></div></div>
-<div class="card"><div class="icon">✏️</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/ETyebMg6gdRDqlqnh3SvDwoB1BvcHPcFow8K_Lmpg2C-Eg?e=ZkfWnl" target="_blank">Sage Edit Issues</a></div></div>
-<div class="card"><div class="icon">🆔</div><div><a href="https://docs.google.com/spreadsheets/d/1MB9qAlHxckPGbax3bPRB48r_8YaI56Q0RrPsrwGTtac/edit?gid=0#gid=0" target="_blank">ORCID Name Mismatch</a></div></div>
-<div class="card"><div class="icon">⛔</div><div><a href="https://corefultech-my.sharepoint.com/:x:/p/pavankumar_harikar/IQCkE7EqdCRwTZnMOrk87gz6AUaocyR49-QCvcq5BThiWn0?rtime=RIpaQuPR3kg" target="_blank">XML Error Tracker</a></div></div>
-<div class="card"><div class="icon">🚨</div><div><a href="https://cmdigitalsprivatelimited-my.sharepoint.com/:x:/g/personal/tech_support_candm_in/IQAOCh6y3mioSarl5dlnMrEXAb03JufrrTrcmGY1kkp8r3c?rtime=H9b64gvY3kg" target="_blank">QA Log</a></div></div>
-</div>
-<h2 class="section-title">External Resources</h2>
-<div class="grid">
-<div class="card"><div class="icon">❔</div><div><a href="https://sage-cloud.atlassian.net/wiki/external/Y2EyZDVkNjY2NjZlNDIzYTlkM2VjZDRkOGM5OWQxMjc" target="_blank">Vendor FAQ</a></div></div>
-<div class="card"><div class="icon">🌐</div><div><a href="https://sage-cloud.atlassian.net/wiki/external/MWFkN2M5NTFhNTM0NDA2NWJhNDljYmM3NDIwMDIyMWE" target="_blank">Journal Confluence</a></div></div>
-<div class="card"><div class="icon">📝</div><div><a href="https://airtable.com/app16EGd1kJLRd9K7/shrWMrw4uJDncbU9s/tbl0hCzyBD0KVjfvT" target="_blank">Sage Handover Notes Portal</a></div></div>
-<div class="card"><div class="icon">📚</div><div><a href="https://airtable.com/appRxRerdGib9PMrn/shrFLT1mDoRxFfECo/tblcGVinqH1z5voml" target="_blank">Journal MASTER List</a></div></div>
-<div class="card"><div class="icon">🚀</div><div><a href="https://airtable.com/appmDIkZ1Chq5VDZ9/shr6WCdEkGw1gYDb7/tblgqnPd0J4Lc2PXo" target="_blank">T&amp;S Batch 4_C&amp;M List</a></div></div>
-</div>
-</div>
-</div>
 <footer>
     © 2026 C&amp;M Digital Pvt Ltd | 👨‍💻 Designed by <strong>Malar J</strong> | 📅 Last Updated: 03 July 2026
 </footer>
+
 <script>
+// ---------- LIVE CLOCK (exact format from screenshot) ----------
+function updateClock() {
+    const now = new Date();
+
+    // Date: "Friday, July 3, 2026"
+    const optionsDate = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateStr = now.toLocaleDateString('en-US', optionsDate);
+
+    // Time: "12:19:26 PM"
+    const optionsTime = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
+    const timeStr = now.toLocaleTimeString('en-US', optionsTime);
+
+    document.getElementById('clockDate').textContent = dateStr;
+    document.getElementById('clockTime').textContent = timeStr;
+}
+
+updateClock();
+setInterval(updateClock, 1000);
+
+// ---------- SEARCH FUNCTION ----------
 function searchCards(){
-const q=document.getElementById('searchBox').value.toLowerCase();
-document.querySelectorAll('.card').forEach(c=>{
-c.style.display=c.innerText.toLowerCase().includes(q)?'flex':'none';
-});
+    const q = document.getElementById('searchBox').value.toLowerCase();
+    document.querySelectorAll('.card').forEach(c => {
+        c.style.display = c.innerText.toLowerCase().includes(q) ? 'flex' : 'none';
+    });
 }
 </script>
 </body>
